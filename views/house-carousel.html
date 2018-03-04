@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+    <p style="color: white;font-size: 6vmax;">Houses</p>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="carousel slide" data-type="multi" data-interval="3000" id="carousel-h">
+    <div class="carousel-inner">
+      <div class="item" ng-repeat="house in houseCarousel">
+        <div class="col-md-2 col-sm-3 col-xs-6" style="padding: 10px;">
+          <a href="#/houseList" style="text-decoration: none;color: black;">
+            <div class="houseDetail">
+                <p>{{house.name}}</p>
+                <p class="more" href="">- {{house.region}}</p> 
+                <img src="https://2.bp.blogspot.com/-BJHnrrCvEJI/WBs4wetKEVI/AAAAAAAAH-o/VaXgHkk8Nr4mNOmYRvE2wNb4VvI1ePrwACLcB/s640/1662305ff3f6bf0f26e29fd3f2c99c5d.jpg" class="img-responsive">
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="col-md-2 col-sm-3 col-xs-6" style="padding: 10px;">
+          <div class="houseDetail">
+            <a href="#/houseList" style="text-decoration: none;color: black;">
+              <p>View All Houses</p>
+              <p class="more" href="">&nbsp;</p>
+              <img src="https://2.bp.blogspot.com/-BJHnrrCvEJI/WBs4wetKEVI/AAAAAAAAH-o/VaXgHkk8Nr4mNOmYRvE2wNb4VvI1ePrwACLcB/s640/1662305ff3f6bf0f26e29fd3f2c99c5d.jpg" class="img-responsive">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.carousel-inner -->
+    <a class="left carousel-control" href="#carousel-h" data-slide="prev" target="_self"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <a class="right carousel-control" href="#carousel-h" data-slide="next" target="_self"><i class="glyphicon glyphicon-chevron-right"></i></a>
+  </div> <!-- /.carousel -->
+</div>

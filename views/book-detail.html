@@ -1,0 +1,59 @@
+<div class="container-fluid">
+	<br/>
+	<div class="container">
+		<div id="divBookDetail" class="col-md-12 col-sm-12 col-xs-12 card">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<center><p class="title">{{bookDetailCtrl.bookDetail.name}}</p></center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<center>
+						<img src="http://covers1.booksamillion.com/covers/bam/0/55/380/544/0553805444.jpg" class="img-responsive">
+					</center>
+				</div>
+				<div class="col-md-8 col-sm-8 col-xs-12" style="padding-left: 38px;">
+					<p><b>Authors :</b> <i>{{bookDetailCtrl.bookDetail.authors.toString()}}</i></p>
+					<p><b>Country :</b> <i>{{bookDetailCtrl.bookDetail.country}}</i></p>
+					<p><b>ISBN :</b> <i>{{bookDetailCtrl.bookDetail.isbn}}</i></p>
+					<p><b>Media Type :</b> <i>{{bookDetailCtrl.bookDetail.mediaType}}</i></p>
+					<p><b>Publisher :</b> <i>{{bookDetailCtrl.bookDetail.publisher}}</i></p>
+					<p><b>Number Of Pages :</b> <i>{{bookDetailCtrl.bookDetail.numberOfPages}}</i></p>
+					<p><b>Released Date :</b> <i>{{bookDetailCtrl.bookDetail.released | date:"dd MMMM yyyy"}}</i></p>
+				</div>
+			</div>
+			<div class="row" ng-show="bookDetailCtrl.bookDetail.characters.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">Characters
+						  	<span class="badge" style="color: white;">{{bookDetailCtrl.bookDetail.characters.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="char in bookDetailCtrl.bookDetail.characters" style="background-color: white;">
+							<a href="#/character" ng-click="bookDetailCtrl.getCharDetail(char)">{{char}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" ng-show="bookDetailCtrl.bookDetail.povCharacters.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">
+						  	POV Characters<span class="badge" style="color: white;">{{bookDetailCtrl.bookDetail.povCharacters.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="pov in bookDetailCtrl.bookDetail.povCharacters" style="background-color: white;">
+							<a href="#/character" ng-click="bookDetailCtrl.getCharDetail(pov)">{{pov}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

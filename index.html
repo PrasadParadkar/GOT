@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-App='GotApp'>
+	<head>
+		<title>Game Of Thrones</title>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width,initial-scale=1">
+    	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    	<link rel="stylesheet" href="css/myApp.css">
+		<link rel="stylesheet" href="css/carousel.css">
+		<link rel="stylesheet" href="css/mediaQueries.css">
+	</head>
+	<body>
+		<div id="wrapper">
+			<nav id="mainMenu" class="navbar navbar-inverse navbar-fixed-top">
+		  		<div class="container-fluid">
+		  			<!-- Brand and toggle get grouped for better mobile display -->
+		    		<div class="navbar-header">
+		      			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+		        			<span class="icon-bar"></span>
+			        		<span class="icon-bar"></span>
+			        		<span class="icon-bar"></span>                        
+		      			</button>
+						<div  class="navbar-brand">
+		                    <a id="menu-toggle" href="#/" class="glyphicon glyphicon-align-justify hidden-lg hidden-md hidden-sm hidden-xs"></a>
+		    				<a id="websiteName" href="#/">Game of Thrones</a>
+		                </div>
+		    		</div>
+		    		<!-- Collect the nav links, forms, and other content for toggling -->
+		    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      	<ul id="subMenu" class="nav navbar-nav">
+				        	<li><a href="#/">Home</a></li>
+					        <li><a href="#/contact">Contact Me</a></li>
+		      			</ul>
+		    		</div>
+		  		</div>
+			</nav>
+			<div id="sidebar-wrapper" class="hidden-lg hidden-md hidden-sm hidden-xs">
+		        <nav id="spy">
+		            <ul class="sidebar-nav nav">
+		                <li>
+		                    <a class="lnk" href="#/">
+		                    	<span>Home</span>
+		                    </a>
+		                </li>
+		                <li>
+		                    <a class="lnk" href="#/contact">
+		                        <span>Contact Me</span>
+		                    </a>
+		                </li>
+		            </ul>
+		        </nav>
+		    </div>
+		</div><!--/wrapper-->
+
+		<div ng-view style="padding-bottom: 100px;min-height:100%;"></div>
+
+		<a id="back-to-top" href="#" class="btn back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left" style="background-color: #00c9ff;"><i class="fa fa-stack-1x fa-arrow-circle-up"></i></a>
+		
+		<!-- Footer -->
+		<footer style="background:url('img/footer.jpg');position: relative;clear:both;width: 100%;margin-top: -100px;bottom: 0;">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	                    <ul class="list-inline text-center" style="margin-top: 35px;">
+	                        <li>
+	                            <a href="https://www.linkedin.com/in/prasad-paradkar-645336a6/" target="_blank">
+	                                <span class="fa-stack fa-lg">
+	                                    <i class="fa fa-circle fa-stack-2x"></i>
+	                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+	                                </span>
+	                            </a>
+	                        </li>
+	                        <li>
+	                            <a href="https://www.facebook.com/prasad.paradkar.33" target="_blank">
+	                                <span class="fa-stack fa-lg">
+	                                    <i class="fa fa-circle fa-stack-2x"></i>
+	                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	                                </span>
+	                            </a>
+	                        </li>
+	                        <li>
+	                            <a href="https://github.com/PrasadParadkar" target="_blank">
+	                                <span class="fa-stack fa-lg">
+	                                    <i class="fa fa-circle fa-stack-2x"></i>
+	                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+	                                </span>
+	                            </a>
+	                        </li>
+	                    </ul>
+	                    <center><p class="copyright text-muted" style="font-size: 1vmax;font-weight: bold;">Copyright &copy; GameOfThrones.com <span id="year"></span></p></center>
+	                </div>
+	            </div>
+	        </div>
+	    </footer>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.1.2/jquery.flip.min.js"></script>
+
+	<script src="angular/app.js"></script>
+	<script src="angular/services/appServices.js"></script>
+	<script src="angular/directives/appDirective.js"></script>
+	<script src="angular/controllers/main-controller.js"></script>
+	<script src="angular/controllers/booklist-controller.js"></script>
+	<script src="angular/controllers/charlist-controller.js"></script>
+	<script src="angular/controllers/houselist-controller.js"></script>
+	<script src="angular/controllers/bookdetail-controller.js"></script>
+	<script src="angular/controllers/chardetail-controller.js"></script>
+	<script src="angular/controllers/housedetail-controller.js"></script>
+	<script src="angular/controllers/contact-controller.js"></script>
+	<script src="angular/routes.js"></script>
+
+	<script src="js/myApp.js"></script>
+	<script src="js/paging.min.js"></script>
+	<script src="js/validator.js"></script>
+	<script>
+		window.year = new Date().getFullYear();
+		document.getElementById("year").innerHTML = year;
+	</script>
+	</body>
+</html>

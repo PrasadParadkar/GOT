@@ -1,0 +1,148 @@
+html, body{
+	height: 100%;
+}
+
+.navbar{
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+nav{
+	height: 0px !important;
+}
+
+fieldset{
+	border: 2px solid black !important;
+}
+
+#divCharDetail{
+	background: #EECDA3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#divBookDetail{
+	background: #d9a7c7;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#divHouseDetail{
+	background: #FC466B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #3F5EFB, #FC466B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#carousel-b p, #carousel-c p, #carousel-h p{
+	font-size: 1.75vmax;
+}
+
+#carousel-b .more, #carousel-c .more, #carousel-h .more{
+	font-size: 1vmax;
+}
+
+.more {
+  display: block;
+  margin: 5px 0 15px 0;
+  text-align: center;
+  font-size: 10px;
+  color: #CFCFCF;
+  text-decoration: none;
+  transition: opacity 300ms ease;
+}
+
+.card-title{
+	font-weight: bold !important;
+	font-size: 1.6vmax !important;
+}
+
+.card-action > a{
+	font-size: 1vmax;
+}
+
+.card-content{
+	font-size: 1vmax;
+}
+
+#fsHouse{
+	height: 85px;
+	border: 2px solid white !important;
+}
+
+.btn-floating{
+	width: 40px !important;
+	height: 40px !important;
+}
+
+.front .btn-large{
+	line-height: 45px;
+}
+
+.front .btn-floating.btn-large i {
+    line-height: 0px;
+}
+
+#txtBookName, #txtCharName, #txtHouseName{
+	height: 35px;
+	border:1px solid black;
+	border-radius: 5px;
+}
+
+#divBookDetail .title, #divCharDetail .title, #divHouseDetail .title{
+	font-size: 5vmax;
+}
+
+#divBookDetail p, #divCharDetail p, #divHouseDetail p{
+	font-size: 1.8vmax;
+	word-wrap: break-word;
+}
+
+.collapsible-header, span.badge{
+	font-size: 1.3vmax !important;
+}
+
+.collapsible-body{
+	font-size: 1.15vmax;
+}
+
+form label{
+	color: black;
+	font-weight: bold;
+}
+
+.help-block li{
+	font-weight: bold;
+	color: #b30909;
+}
+
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    display:none;
+}
+
+#mainMenu {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px !important;
+    border: 1px solid transparent;
+    height: 20px;
+}
+
+.navbar-collapse{
+    background-color: black;
+}
+
+#websiteName, #websiteName:hover{
+    color: #337ab7;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #f5f5f5;
+    font-weight: bold;
+}

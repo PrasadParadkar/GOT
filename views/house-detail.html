@@ -1,0 +1,64 @@
+<div class="container-fluid">
+	<br/>
+	<div class="container">
+		<div id="divHouseDetail" class="col-md-12 col-sm-12 col-xs-12 card">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<center><p class="title">{{houseDetailCtrl.houseDetail.name}}</p></center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<center>
+						<img src="http://pop-verse.com/wp-content/uploads/2013/10/game-of-thrones-major-houses-from-a-song-ice-and-fire-436916-620x330.jpg" class="img-responsive">
+					</center>
+				</div>
+				<div class="col-md-8 col-sm-8 col-xs-12" style="padding-left: 38px;">
+					<p ng-if="houseDetailCtrl.houseDetail.region"><b>Region :</b> <i>{{houseDetailCtrl.houseDetail.region}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.coatOfArms"><b>Coat Of Arms :</b> <i>{{houseDetailCtrl.houseDetail.coatOfArms}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.words"><b>Words :</b> <i>{{houseDetailCtrl.houseDetail.words}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.titles.toString()"><b>Titles :</b> <i>{{houseDetailCtrl.houseDetail.titles.toString()}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.seats.toString()"><b>Seats :</b> <i>{{houseDetailCtrl.houseDetail.seats.toString()}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.founded"><b>Founded :</b> <i>{{houseDetailCtrl.houseDetail.founded}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.diedOut"><b>Died Out :</b> <i>{{houseDetailCtrl.houseDetail.diedOut}}</i></p>
+					<p ng-if="houseDetailCtrl.houseDetail.currentLord"><b>Current Lord :</b> <a href="#/character" ng-click="houseDetailCtrl.getCharDetail(houseDetailCtrl.houseDetail.currentLord)"><i>{{houseDetailCtrl.houseDetail.currentLord}}</i></a></p>
+					<p ng-if="houseDetailCtrl.houseDetail.heir"><b>Heir :</b> <a href="#/character" ng-click="houseDetailCtrl.getCharDetail(houseDetailCtrl.houseDetail.heir)"><i>{{houseDetailCtrl.houseDetail.heir}}</i></a></p>
+					<p ng-if="houseDetailCtrl.houseDetail.overlord"><b>Overlord :</b> <a href="#/house" ng-click="houseDetailCtrl.getHouseDetail(houseDetailCtrl.houseDetail.overlord)"><i>{{houseDetailCtrl.houseDetail.overlord}}</i></a></p>
+					<p ng-if="houseDetailCtrl.houseDetail.founder"><b>Founder :</b> <a href="#/character" ng-click="houseDetailCtrl.getCharDetail(houseDetailCtrl.houseDetail.founder)"><i>{{houseDetailCtrl.houseDetail.founder}}</i></a></p>
+					<p ng-if="houseDetailCtrl.houseDetail.ancestralWeapons.toString()"><b>Ancestral Weapons :</b> <i>{{houseDetailCtrl.houseDetail.ancestralWeapons.toString()}}</i></p>
+				</div>
+			</div>
+			<div class="row" ng-show="houseDetailCtrl.houseDetail.cadetBranches.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">Cadet Branches
+						  	<span class="badge" style="color: white;">{{houseDetailCtrl.houseDetail.cadetBranches.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="branch in houseDetailCtrl.houseDetail.cadetBranches" style="background-color: white;">
+							<a href="#/house" ng-click="houseDetailCtrl.getHouseDetail(branch)">{{branch}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" ng-show="houseDetailCtrl.houseDetail.swornMembers.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">Sworn Members
+						  	<span class="badge" style="color: white;">{{houseDetailCtrl.houseDetail.swornMembers.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="member in houseDetailCtrl.houseDetail.swornMembers" style="background-color: white;">
+							<a href="#/character" ng-click="houseDetailCtrl.getCharDetail(member)">{{member}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

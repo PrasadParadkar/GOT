@@ -1,0 +1,223 @@
+/*Media Queries*/
+@media screen and (max-width: 767px){
+	.carousel{
+		height: 280px !important;
+	}
+
+	#carousel-b .bookDetail, #carousel-c .charDetail, #carousel-h .houseDetail{
+		padding: 10px;
+		border-radius: 25px;
+		height: 260px;
+		background-color: red;
+		box-shadow: 0 0 10px #fff;
+	}
+
+	#carousel-b img, #carousel-c img, #carousel-h img{
+		height: 21vh;
+	}
+
+	.card-image > img{
+		height: 150px;
+		max-width: 100%;
+	}
+
+	#txtBookName, #txtCharName, #txtHouseName{
+		height: 25px;
+		border:1px solid black;
+		border-radius: 5px;
+	}
+
+	fieldset{
+		height: 200px;
+	}
+
+	.card-action > a{
+		padding: 5px;
+		line-height: 30px;
+	}
+
+	#fsHouse{
+		height: 115px;
+	}
+
+	#divBookDetail .img-responsive, #divCharDetail .img-responsive, #divHouseDetail .img-responsive{
+		width: 220px;
+		height: 200px;
+	}
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	.carousel{
+		height: 300px !important;
+	}
+
+	#carousel-b .bookDetail, #carousel-c .charDetail, #carousel-h .houseDetail{
+		padding: 10px;
+		border-radius: 25px;
+		height: 280px;
+		background-color: red;
+		box-shadow: 0 0 10px #fff;
+	}
+
+	#carousel-b img, #carousel-c img, #carousel-h img{
+		height: 27vh;
+	}
+
+	.card-image > img{
+		height: 165px;
+		max-width: 100%;
+	}
+
+	.card-action > a{
+		padding: 5px;
+		line-height: 30px;
+	}
+
+	fieldset{
+		height: 130px;
+	}
+
+	#txtBookName, #txtCharName, #txtHouseName{
+		height: 30px;
+		border:1px solid black;
+		border-radius: 5px;
+	}
+
+	#divBookDetail .img-responsive, #divCharDetail .img-responsive, #divHouseDetail .img-responsive{
+		width: 190px;
+		height: 220px;
+	}
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+	.carousel{
+		height: 350px !important;
+	}
+
+	#carousel-b .bookDetail, #carousel-c .charDetail, #carousel-h .houseDetail{
+		padding: 10px;
+		border-radius: 25px;
+		height: 330px;
+		background-color: red;
+		box-shadow: 0 0 10px #fff;
+	}
+
+	#carousel-b img, #carousel-c img, #carousel-h img{
+		height: 23vh;
+	}
+
+	.card-image > img{
+		height: 200px;
+		max-width: 100%;
+	}
+
+	fieldset{
+		height: 140px;
+	}
+
+	.card-action > a{
+		padding: 5px;
+		line-height: 30px;
+	}
+
+	#divBookDetail .img-responsive, #divCharDetail .img-responsive, #divHouseDetail .img-responsive{
+		width: 185px;
+		height: 245px;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1919px) {
+	.carousel{
+		height: 350px !important;
+	}
+
+	#carousel-b .bookDetail, #carousel-c .charDetail, #carousel-h .houseDetail{
+		padding: 10px;
+		border-radius: 25px;
+		height: 330px;
+		background-color: red;
+		box-shadow: 0 0 10px #fff;
+	}
+
+	#carousel-b img, #carousel-c img, #carousel-h img{
+		height: 23vh;
+	}
+
+	.card-image > img{
+		height: 200px;
+		max-width: 100%;
+	}
+
+	fieldset{
+		height: 140px;
+	}
+
+	#divBookDetail .img-responsive, #divCharDetail .img-responsive, #divHouseDetail .img-responsive{
+		width: 260px;
+		height: 300px;
+	}
+}
+
+@media screen and (min-width: 1920px) and (max-width: 3839px){
+	.carousel{
+		height: 470px !important;
+	}
+
+	#carousel-b .bookDetail, #carousel-c .charDetail, #carousel-h .houseDetail{
+		padding: 10px;
+		border-radius: 25px;
+		height: 450px;
+		background-color: red;
+		box-shadow: 0 0 10px #fff;
+	}
+
+	#carousel-b img, #carousel-c img, #carousel-h img{
+		height: 24vh;
+	}
+
+	.card-image > img{
+		height: 350px;
+		max-width: 100%;
+	}
+
+	fieldset{
+		height: 140px;
+	}
+
+	#divBookDetail .img-responsive, #divCharDetail .img-responsive, #divHouseDetail .img-responsive{
+		width: 370px;
+		height: 400px;
+	}
+}
+
+@media screen and (min-width: 3840px){
+	.carousel{
+		height: 860px !important;
+	}
+
+	#carousel-b .bookDetail, #carousel-c .charDetail, #carousel-h .houseDetail{
+		padding: 10px;
+		border-radius: 25px;
+		height: 840px;
+		background-color: red;
+		box-shadow: 0 0 10px #fff;
+	}
+
+	#carousel-b img, #carousel-c img, #carousel-h img{
+		height: 24vh;
+	}
+
+	.card-image > img{
+		height: 480px;
+		max-width: 100%;
+	}
+
+	fieldset{
+		height: 140px;
+	}
+
+	#divBookDetail .img-responsive, #divCharDetail .img-responsive, #divHouseDetail .img-responsive{
+		width: 380px;
+		height: 740px;
+	}
+}

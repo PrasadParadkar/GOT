@@ -1,0 +1,150 @@
+<div class="container-fluid">
+  <br/>
+  <fieldset style="background: url('img/booklistFlt.jpg');">
+    <legend visible="true" style="width:auto; margin-bottom: 0px; font-size: 16px; font-weight: bold;">Filter</legend>
+      <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-5">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="ddlNoOfBookPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              No Of Records
+              <span class="caret"></span>
+            </button>
+            <ul id="ddlBookPageList" class="dropdown-menu center" aria-labelledby="ddlNoOfBookPages">
+              <li><a>No Of Records</a></li>
+              <li><a>10</a></li>
+              <li><a>20</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-7">
+          <a style="text-decoration: none;cursor: pointer;" data-toggle="tooltip" title="Ascending"
+          ng-click="bookListCtrl.setOrder('asc')">
+            <img class="img-responsive" src="img/asc.png" width="36px" height="36px" style="display: inline;">
+          </a>
+          <a style="text-decoration: none;cursor: pointer;" data-toggle="tooltip" title="Descending"
+          ng-click="bookListCtrl.setOrder('desc')">
+            <img class="img-responsive" src="img/desc.png" width="36px" height="36px" style="display: inline;">
+          </a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="ddlFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Filter By
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu center" aria-labelledby="dropdownMenu1">
+              <li><a ng-click="bookListCtrl.showAuthor()">Author Name</a></li>
+              <li><a ng-click="bookListCtrl.showPublisher()">Publisher</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div id="ddlAuthorList" class="col-md-3 col-sm-3 col-xs-5">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <p id="selectedAuthor"></p>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="ddlAuthorList">
+                <li ng-repeat="author in bookListCtrl.authorList">
+                  <a ng-click="bookListCtrl.authorSelected(author)">{{author}}</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="ddlPublisherList" class="col-md-3 col-sm-3 col-xs-6">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <p id="selectedPublisher"></p>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="ddlPublisherList">
+                <li ng-repeat="publisher in bookListCtrl.publisherList">
+                  <a ng-click="bookListCtrl.publisherSelected(publisher)">{{publisher}}</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="input-field" style="margin-top: 0px;width: 100%">
+          <input type="text" id="txtBookName" class="center form-control" placeholder="Search for book/author" 
+          ng-change="bookListCtrl.textChanged()" ng-model="search"
+          style="border:1px solid black; border-radius: 5px;">
+        </div>
+        </div>
+      </div>
+  </fieldset>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" ng-repeat="book in bookListCtrl.booksDatalist | orderBy:bookListCtrl.order | filter:bookListCtrl.publFilter | filter:bookListCtrl.authFilter | filter:bookListCtrl.searchedText">
+      <div class="flip">
+        <div class="front">
+          <div class="card">
+            <div class="card-image">
+              <img src="http://covers1.booksamillion.com/covers/bam/0/55/380/544/0553805444.jpg" class="img-responsive">
+              <span class="card-title">{{book.name}}</span>
+            </div>
+            <div class="card-content">
+              <p ng-if="book.authors.toString()">- {{book.authors.toString()}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="card">
+            <div class="card-image">
+              <img class="img-responsive" src="http://covers1.booksamillion.com/covers/bam/0/55/380/544/0553805444.jpg">
+              <span class="card-title">{{book.name}}</span>
+            </div>
+            <div class="card-action center">
+              <a href="#/book" ng-click="bookListCtrl.getBookDetail(book.url)" class="btn btn-info">Know More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div paging class="center col-md-12 col-sm-12 col-xs-12"
+    page=bookListCtrl.pageNo
+    page-size=bookListCtrl.items_per_page 
+    total=bookListCtrl.total_count
+    text-next-class="glyphicon glyphicon-chevron-right"
+    text-prev-class="glyphicon glyphicon-chevron-left"
+    text-first-class="glyphicon glyphicon-backward"
+    text-last-class="glyphicon glyphicon-forward"
+    text-title-page="Page {page}"
+    text-title-first="First Page"
+    text-title-last="Last Page"
+    text-title-next="Next Page"
+    text-title-prev="Prev Page"
+    show-prev-next="true"
+    show-first-last="true"
+    paging-action=bookListCtrl.getBooksData(page,pageSize)>
+  </div> 
+</div>
+
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<style>
+  .input-field input:focus {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+
+ .btn{
+    color:black;
+    letter-spacing: 0px;
+    font-size: 1vmax;
+    font-weight: bold;
+  }
+
+  .input-group-btn{
+    vertical-align: top;
+  }
+</style>

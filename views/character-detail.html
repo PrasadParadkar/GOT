@@ -1,0 +1,77 @@
+<div class="container-fluid">
+	<br/><br/>
+	<div class="container">
+		<div id="divCharDetail" class="col-md-12 col-sm-12 col-xs-12 card">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<center><p class="title">{{charDetailCtrl.charDetail.name}}</p></center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<center>
+						<img src="http://cdn.playbuzz.com/cdn/235fb76a-a586-4c1a-8bd6-c0e55859b90a/92ad4231-9e5d-4a2d-91ec-616f898665c7_560_420.jpg" class="img-responsive">
+					</center>
+				</div>
+				<div class="col-md-8 col-sm-8 col-xs-12" style="padding-left: 38px;">
+					<p ng-if="charDetailCtrl.charDetail.aliases.toString()"><b>Aliases :</b> <i>{{charDetailCtrl.charDetail.aliases.toString()}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.gender"><b>Gender :</b> <i>{{charDetailCtrl.charDetail.gender}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.culture"><b>Culture :</b> <i>{{charDetailCtrl.charDetail.culture}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.titles.toString()"><b>Titles :</b> <i>{{charDetailCtrl.charDetail.titles.toString()}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.born"><b>Born :</b> <i>{{charDetailCtrl.charDetail.born}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.died"><b>Died :</b> <i>{{charDetailCtrl.charDetail.died}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.father"><b>Father :</b> <a href="#/character" ng-click="charDetailCtrl.getCharDetail(charDetailCtrl.charDetail.father)"><i>{{charDetailCtrl.charDetail.father}}</i></a></p>
+					<p ng-if="charDetailCtrl.charDetail.mother"><b>Mother :</b> <a href="#/character" ng-click="charDetailCtrl.getCharDetail(charDetailCtrl.charDetail.mother)"><i>{{charDetailCtrl.charDetail.mother}}</i></a></p>
+					<p ng-if="charDetailCtrl.charDetail.spouse"><b>Spouse :</b> <a href="#/character" ng-click="charDetailCtrl.getCharDetail(charDetailCtrl.charDetail.spouse)"><i>{{charDetailCtrl.charDetail.spouse}}</i></a></p>
+					<p ng-if="charDetailCtrl.charDetail.tvSeries.toString()"><b>TV Series :</b> <i>{{charDetailCtrl.charDetail.tvSeries.toString()}}</i></p>
+					<p ng-if="charDetailCtrl.charDetail.playedBy.toString()"><b>Played By :</b> <i>{{charDetailCtrl.charDetail.playedBy.toString()}}</i></p>
+				</div>
+			</div>
+			<div class="row" ng-show="charDetailCtrl.charDetail.allegiances.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">Allegiances
+						  	<span class="badge" style="color: white;">{{charDetailCtrl.charDetail.allegiances.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="allegiance in charDetailCtrl.charDetail.allegiances" style="background-color: white;">
+							<a href="#/house" ng-click="charDetailCtrl.getHouseDetail(allegiance)">{{allegiance}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" ng-show="charDetailCtrl.charDetail.books.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">
+						  	Books<span class="badge" style="color: white;">{{charDetailCtrl.charDetail.books.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="book in charDetailCtrl.charDetail.books" style="background-color: white;">
+							<a href="#/book" ng-click="charDetailCtrl.getBookDetail(book)">{{book}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" ng-show="charDetailCtrl.charDetail.povBooks.length > 0">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<ul class="collapsible popout" data-collapsible="accordion">
+						<li>
+						  <div class="collapsible-header">
+						  	POV Books<span class="badge" style="color: white;">{{charDetailCtrl.charDetail.povBooks.length}}</span>
+						  </div>
+						  <div class="collapsible-body" ng-repeat="pov in charDetailCtrl.charDetail.povBooks" style="background-color: white;">
+							<a href="#/book" ng-click="charDetailCtrl.getBookDetail(pov)">{{pov}}</a>
+						  </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

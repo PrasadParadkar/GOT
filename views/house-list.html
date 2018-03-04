@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <br/>
+  <fieldset id="fsHouse">
+    <legend visible="true" style="width:auto; margin-bottom: 0px; font-size: 16px; font-weight: bold;letter-spacing: 5px;color: #ea8997">FILTER</legend>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="ddlNoOfHousePages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              No Of Records
+              <span class="caret"></span>
+            </button>
+            <ul id="ddlHousePageList" class="dropdown-menu center" aria-labelledby="ddlNoOfHousePages">
+              <li><a>No Of Records</a></li>
+              <li><a>10</a></li>
+              <li><a>20</a></li>
+              <li><a>30</a></li>
+              <li><a>40</a></li>
+              <li><a>50</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <a style="text-decoration: none;cursor: pointer;" data-toggle="tooltip" title="Ascending"
+          ng-click="houseListCtrl.setOrder('asc')">
+            <img class="img-responsive" src="http://www.free-icons-download.net/images/sort-ascend-icon-6663.png" width="36px" height="36px" style="display: inline;">
+          </a>
+          <a style="text-decoration: none;cursor: pointer;" data-toggle="tooltip" title="Descending"
+          ng-click="houseListCtrl.setOrder('desc')">
+            <img class="img-responsive" src="http://www.haipic.com/icon/36801/36801.png" width="36px" height="36px" style="display: inline;">
+          </a>
+        </div>
+
+        <div id="ddlRegionList" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <p id="selectedRegion"></p>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="ddlRegionList">
+                <li ng-repeat="region in houseListCtrl.regionList">
+                  <a ng-click="houseListCtrl.regionSelected(region)">{{region}}</a>
+                </li>
+            </ul>
+          </div>
+        </div>     
+
+        <div class="col-lg-5 col-md-5 col-sm-4 col-xs-6 input-field" style="margin-top: 0px;">
+          <input type="text" id="txtHouseName" class="center form-control" placeholder="Search for House/Region" 
+          ng-change="houseListCtrl.textChanged()" ng-model="search"
+          style="border:1px solid white;color: white;">
+        </div>
+
+      </div>
+  </fieldset>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" ng-repeat="house in houseListCtrl.housesDatalist | orderBy:houseListCtrl.order | filter:houseListCtrl.searchedText | filter:houseListCtrl.regionFilter">
+      <div class="flip">
+        <div class="front">
+          <div class="card">
+            <div class="card-image">
+              <img src="img/house.jpg" class="img-responsive">
+              <span class="card-title" style="color:black;">{{house.name}}</span>
+            </div>
+            <div class="card-content">
+              <p ng-if="house.region">- {{house.region}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="card">
+            <div class="card-image">
+              <img src="img/house.jpg" class="img-responsive">
+              <span class="card-title" style="color:black;">{{house.name}}</span>
+            </div>
+            <div class="card-action center">
+              <a href="#/house" ng-click="houseListCtrl.getHouseDetail(house.url)" class="btn btn-info">Know More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div paging class="center col-md-12 col-sm-12 col-xs-12"
+    page=houseListCtrl.pageNo
+    page-size=houseListCtrl.items_per_page 
+    total=houseListCtrl.total_count
+    text-next-class="glyphicon glyphicon-chevron-right"
+    text-prev-class="glyphicon glyphicon-chevron-left"
+    text-first-class="glyphicon glyphicon-backward"
+    text-last-class="glyphicon glyphicon-forward"
+    text-title-page="Page {page}"
+    text-title-first="First Page"
+    text-title-last="Last Page"
+    text-title-next="Next Page"
+    text-title-prev="Prev Page"
+    show-prev-next="true"
+    show-first-last="true"
+    paging-action=houseListCtrl.getHousesData(page,pageSize)>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<style>
+  .card {
+    -webkit-clip-path: polygon(50% 0, 50% 0, 100% 20%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0% 20%);
+    clip-path: polygon(50% 0, 50% 0, 100% 20%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0% 20%);
+    /*-moz-clip-path: polygon(50% 0, 50% 0, 100% 20%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0% 20%);*/
+  }
+
+  .input-field input:focus {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+
+ .btn{
+    color:black;
+    letter-spacing: 0px;
+    font-size: 1vmax;
+    font-weight: bold;
+  }
+</style>
