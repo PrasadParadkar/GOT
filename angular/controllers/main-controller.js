@@ -44,15 +44,15 @@ myApp.controller('MainController',['$http','$window', 'GotService', 'StoreDetail
 	this.loadAllData();
 
 	this.slideMultipleCarousel = function(){
-		$(document).ready(function () {
+		angular.element(document).ready(function () {
 		    setTimeout(function(){
-				$('.carousel[data-type="multi"] .item').each(function(){
-					var next = $(this).next();
+				angular.element('.carousel[data-type="multi"] .item').each(function(){
+					var next = angular.element(this).next();
 
 					if (!next.length) {
-						next = $(this).siblings(':first');
+						next = angular.element(this).siblings(':first');
 					}
-					next.children(':first-child').clone().appendTo($(this));
+					next.children(':first-child').clone().appendTo(angular.element(this));
 
 					var count;
 					if($window.windowWidthSize < 768){
@@ -68,27 +68,27 @@ myApp.controller('MainController',['$http','$window', 'GotService', 'StoreDetail
 					for (var i=0;i<count;i++) {
 						next=next.next();
 						if (!next.length) {
-							next = $(this).siblings(':first');
+							next = angular.element(this).siblings(':first');
 						}
-						next.children(':first-child').clone().appendTo($(this));
+						next.children(':first-child').clone().appendTo(angular.element(this));
 					}
 				});
 
-		    	$('.carousel-inner').children(':first-child').addClass('active');
+		    	angular.element('.carousel-inner').children(':first-child').addClass('active');
 
 		    },3000);
 
-			$(window).scroll(function () {
-		        if ($(this).scrollTop() > 400) {
-		            $('#back-to-top').fadeIn();
+			angular.element(window).scroll(function () {
+		        if (angular.element(this).scrollTop() > 400) {
+		            angular.element('#back-to-top').fadeIn();
 		        } else {
-		            $('#back-to-top').fadeOut();
+		            angular.element('#back-to-top').fadeOut();
 		        }
 		    });
 		    // scroll body to 0px on click
-		    $('#back-to-top').click(function () {
-		        $('#back-to-top').tooltip('hide');
-		        $('body,html').animate({
+		    angular.element('#back-to-top').click(function () {
+		        angular.element('#back-to-top').tooltip('hide');
+		        angular.element('body,html').animate({
 		            scrollTop: 0
 		        });
 		        return false;
