@@ -9,15 +9,6 @@ myApp.config(['$routeProvider', function($routeProvider){
         	controllerAs 	: 'mainCtrl'
         })
 
-        .when('/contact',{
-            // location of the template
-            templateUrl     : 'views/contact.html',
-            // Which controller it should use 
-            controller      : 'ContactController',
-            // what is the alias of that controller.
-            controllerAs    : 'contactCtrl'
-        })
-
         .when('/bookList',{
             // location of the template
             templateUrl     : 'views/book-list.html',

@@ -1,5 +1,9 @@
 myApp.controller('CharacterListController',['$http', 'StoreDetailService', 'PageDataService', 'ItemDetailService', function($http,StoreDetailService,PageDataService,ItemDetailService){
 	angular.element('body').css('background', 'url("img/charlistBack.jpg")');
+	angular.element('#divJumbo').addClass('ng-hide');
+	angular.element(document).ready(function(){
+	    $(this).scrollTop(0);
+	});
 	
 	var main = this;
 	main.order = "name";
@@ -7,35 +11,37 @@ myApp.controller('CharacterListController',['$http', 'StoreDetailService', 'Page
 	main.dupes = {};
 	main.genderSelection = "";
 	main.pageNo = PageDataService.getSelectedCharPgNo();
-	main.items_per_page = 10;
+	main.items_per_page = PageDataService.getSelectedCharPgItems();
 	main.total_count = 2138;
 	main.characterDatalist = [];
 	main.genders = ["Select Gender","Male","Female"];
 	main.cultureList = [];
 	angular.element('#ddlGenderList').hide();
 	angular.element('#ddlCultureList').hide();
+	main.linkInd = ItemDetailService.returnCharIndicator();
+
+	if(main.linkInd == "char"){
+		main.btnText = PageDataService.getSelectedCharPgItems();
+	}
+	else{
+		main.btnText = "No Of Records";
+	}
 
 	angular.element('#ddlCharPageList li >a').click(function() {
 		angular.element('#ddlNoOfCharPages').text(angular.element(this).text());
 		if(angular.element(this).text() == "No Of Records"){
-			main.getCharactersData(main.pageNo, main.items_per_page);
+			main.getCharactersData(main.pageNo, 10);
+			main.btnText = "No Of Records";
+			ItemDetailService.storeCharIndicator("", "");
 		}
 		else{
 			main.getCharactersData(main.pageNo, angular.element(this).text());
+			main.btnText = angular.element(this).text();
 		}
 	});
 
-	this.readyFunction = function(){
-		angular.element(document).ready(function () {
-	        angular.element(".flip").flip({
-	        	trigger: 'hover'
-	    	});
-		});
-	}
-
 	this.textChanged = function(){
 		main.searchedText = angular.element(document.getElementById("txtCharName")).val();
-		main.readyFunction();
 	}
 
 	this.loadCharactersArray = function(){
@@ -46,7 +52,7 @@ myApp.controller('CharacterListController',['$http', 'StoreDetailService', 'Page
 		main.searchedText = "";
 		main.genderSelection = "";
 		main.cultureFilter = "";
-		main.readyFunction();
+		angular.element('#ddlNoOfCharPages').text(main.btnText);
 	}
 	
 	this.loadCharactersArray();
@@ -97,13 +103,11 @@ myApp.controller('CharacterListController',['$http', 'StoreDetailService', 'Page
 		{
 			main.genderSelection = "";
 			angular.element('#ddlGenderFilter').text(main.genders[0]);
-			main.readyFunction();
 		}
 		else
 		{
         	angular.element('#ddlGenderFilter').text(gender);
         	main.genderSelection = gender;
-        	main.readyFunction();
     	}
 	}
 
@@ -112,17 +116,18 @@ myApp.controller('CharacterListController',['$http', 'StoreDetailService', 'Page
 		{
 			main.cultureFilter = "";
 			angular.element('#btnSelectedChar').text(main.cultureList[0]);
-			main.readyFunction();
 		}
 		else
 		{
         	angular.element('#btnSelectedChar').text(culture);
         	main.cultureFilter = culture;
-        	main.readyFunction();
     	}
     }
 
 	main.getCharDetail = function(charUrl){
     	ItemDetailService.storeCharUrl(charUrl);
+    	if(main.btnText != "No Of Records"){	
+    		ItemDetailService.storeCharIndicator("char");
+    	}
     }
 }])

@@ -30,6 +30,15 @@ myApp.factory('StoreDetailService', function(){
 	var bookData = [];
 	var characterData = [];
 	var houseData = [];
+	var allData = [];
+
+	var addAllData = function(arrData){
+		allData = arrData;
+	}
+
+	var getAllData = function(){
+		return allData;
+	}
 
 	var addBookData = function(bookArray){
 		bookData = bookArray;
@@ -56,6 +65,8 @@ myApp.factory('StoreDetailService', function(){
 	}
 
 	return{
+		addAllData : addAllData,
+		getAllData : getAllData,
 		addBookData : addBookData,
 		getBookData : getBookData,
 		addCharacterData : addCharacterData,
@@ -69,9 +80,11 @@ myApp.factory('PageDataService', function($http){
 	var pageData = {};
 	var baseUrl = 'https://www.anapioficeandfire.com/api';
 	var selectedBookPgNo , selectedCharPgNo, selectedHousePgNo;
+	var selectedBookPgItems , selectedCharPgItems, selectedHousePgItems;
 
 	pageData.loadBooksDataForPage = function(bookPageNo, bookPageSize){
 		selectedBookPgNo = bookPageNo;
+		selectedBookPgItems = bookPageSize;
 		return $http({
 			method : 'GET',
 			url : baseUrl+'/books?page='+bookPageNo+'&pageSize='+bookPageSize
@@ -80,6 +93,7 @@ myApp.factory('PageDataService', function($http){
 
 	pageData.loadCharsDataForPage = function(charPageNo, charPageSize){
 		selectedCharPgNo = charPageNo;
+		selectedCharPgItems = charPageSize;
 		return $http({
 			method : 'GET',
 			url : baseUrl+'/characters?page='+charPageNo+'&pageSize='+charPageSize
@@ -88,6 +102,7 @@ myApp.factory('PageDataService', function($http){
 
 	pageData.loadHousesDataForPage = function(housePageNo, housePageSize){
 		selectedHousePgNo = housePageNo;
+		selectedHousePgItems = housePageSize;
 		return $http({
 			method : 'GET',
 			url : baseUrl+'/houses?page='+housePageNo+'&pageSize='+housePageSize
@@ -98,24 +113,48 @@ myApp.factory('PageDataService', function($http){
 		return selectedBookPgNo;
 	}
 
+	pageData.getSelectedBookPgItems = function(){
+		return selectedBookPgItems;
+	}
+
 	pageData.getSelectedCharPgNo = function(){
 		return selectedCharPgNo;
+	}
+
+	pageData.getSelectedCharPgItems = function(){
+		return selectedCharPgItems;
 	}
 
 	pageData.getSelectedHousePgNo = function(){
 		return selectedHousePgNo;
 	}
 
+	pageData.getSelectedHousePgItems = function(){
+		return selectedHousePgItems;
+	}
+
 	pageData.setSelectedBookPgNo = function(selBookPgNo){
 		selectedBookPgNo = selBookPgNo;
+	}
+
+	pageData.setSelectedBookPgItems = function(selBookPgItems){
+		selectedBookPgItems = selBookPgItems;
 	}
 
 	pageData.setSelectedCharPgNo = function(selCharPgNo){
 		selectedCharPgNo = selCharPgNo;
 	}
 
+	pageData.setSelectedCharPgItems = function(selCharPgItems){
+		selectedCharPgItems = selCharPgItems;
+	}
+
 	pageData.setSelectedHousePgNo = function(selHousePgNo){
 		selectedHousePgNo = selHousePgNo;
+	}
+
+	pageData.setSelectedHousePgItems = function(selHousePgItems){
+		selectedHousePgItems = selHousePgItems;
 	}
 
 	return pageData;
@@ -126,6 +165,9 @@ myApp.factory('ItemDetailService', function($http){
 	var bUrl = "";
 	var cUrl = "";
 	var hUrl = "";
+	var bookInd = "";
+	var charInd = "";
+	var houseInd = "";
 
 	var storeBookUrl = function(bookUrl){
 		bUrl = bookUrl;
@@ -172,6 +214,27 @@ myApp.factory('ItemDetailService', function($http){
 		})
 	}
 
+	var storeBookIndicator = function(indType){
+		bookInd = indType;
+	}
+	var returnBookIndicator = function(){
+		return bookInd;
+	}
+
+	var storeCharIndicator = function(indType){
+		charInd = indType;
+	}
+	var returnCharIndicator = function(){
+		return charInd;
+	}
+
+	var storeHouseIndicator = function(indType){
+		houseInd = indType;
+	}
+	var returnHouseIndicator = function(){
+		return houseInd;
+	}
+
 	return {
 		storeBookUrl : storeBookUrl,
 		returnBookUrl : returnBookUrl,
@@ -181,6 +244,12 @@ myApp.factory('ItemDetailService', function($http){
 		getIndividualCharData : getIndividualCharData,
 		storeHouseUrl : storeHouseUrl,
 		returnHouseUrl : returnHouseUrl,
-		getIndividualHouseData : getIndividualHouseData
+		getIndividualHouseData : getIndividualHouseData,
+		storeBookIndicator: storeBookIndicator,
+		returnBookIndicator : returnBookIndicator,
+		storeCharIndicator : storeCharIndicator,
+		returnCharIndicator : returnCharIndicator,
+		storeHouseIndicator : storeHouseIndicator,
+		returnHouseIndicator : returnHouseIndicator
 	};
 })

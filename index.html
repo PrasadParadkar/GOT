@@ -31,7 +31,9 @@
 		    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      	<ul id="subMenu" class="nav navbar-nav">
 				        	<li><a href="#/">Home</a></li>
-					        <li><a href="#/contact">Contact Me</a></li>
+				        	<li><a href="#/bookList">Books</a></li>
+				        	<li><a href="#/charList">Characters</a></li>
+				        	<li><a href="#/houseList">Houses</a></li>
 		      			</ul>
 		    		</div>
 		  		</div>
@@ -43,20 +45,31 @@
 		                    <a class="lnk" href="#/">
 		                    	<span>Home</span>
 		                    </a>
-		                </li>
-		                <li>
-		                    <a class="lnk" href="#/contact">
-		                        <span>Contact Me</span>
+		                    <a class="lnk" href="#/bookList">
+		                    	<span>Books</span>
+		                    </a>
+		                    <a class="lnk" href="#/charList">
+		                    	<span>Characters</span>
+		                    </a>
+		                    <a class="lnk" href="#/houseList">
+		                    	<span>Houses</span>
 		                    </a>
 		                </li>
 		            </ul>
 		        </nav>
 		    </div>
 		</div><!--/wrapper-->
+		
+		<div id="divJumbo">
+			<img id="imgJumbo" src="img/title.jpg" class="img-responsive">
+			<section id="section03" class="demo">
+			  <a id="scrollDown" href="#divFilter"><span></span></a>
+			</section>
+		</div>
 
 		<div ng-view style="padding-bottom: 100px;min-height:100%;"></div>
 
-		<a id="back-to-top" href="#" class="btn back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left" style="background-color: #00c9ff;"><i class="fa fa-stack-1x fa-arrow-circle-up"></i></a>
+		<a id="back-to-top" href="#" class="btn back-to-top ng-hide" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left" style="background-color: #00c9ff;"><i class="fa fa-stack-1x fa-arrow-circle-up"></i></a>
 		
 		<!-- Footer -->
 		<footer style="background:url('img/footer.jpg');position: relative;clear:both;width: 100%;margin-top: -100px;bottom: 0;">
@@ -116,10 +129,16 @@
 
 	<script src="js/myApp.js"></script>
 	<script src="js/paging.min.js"></script>
-	<script src="js/validator.js"></script>
 	<script>
 		window.year = new Date().getFullYear();
 		document.getElementById("year").innerHTML = year;
+
+		$(function() {
+		  $('#scrollDown').on('click', function(e) {
+		    e.preventDefault();
+		    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+		  });
+		});
 	</script>
 	</body>
 </html>

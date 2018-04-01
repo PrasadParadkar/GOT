@@ -1,5 +1,10 @@
 myApp.controller('BookDetailController', ['$http', 'ItemDetailService', function($http,ItemDetailService){
 	angular.element('body').css('background', 'url("img/2.jpg")');
+	angular.element('#divJumbo').addClass('ng-hide');
+	angular.element(document).ready(function(){
+	    $(this).scrollTop(0);
+	});
+	
 	var main = this;
 	main.bookUrl = "";
 	main.bookDetail = {};

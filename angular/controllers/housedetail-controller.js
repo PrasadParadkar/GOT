@@ -1,5 +1,9 @@
 myApp.controller('HouseDetailController', ['$http', 'ItemDetailService', function($http,ItemDetailService){
 	angular.element('body').css('background', 'url("img/4.jpg")');
+	angular.element('#divJumbo').addClass('ng-hide');
+	angular.element(document).ready(function(){
+	    $(this).scrollTop(0);
+	});
 	
 	var main = this;
 	main.houseUrl = "";

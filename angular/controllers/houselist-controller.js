@@ -1,37 +1,43 @@
 myApp.controller('HouseListController',['$http', 'StoreDetailService', 'PageDataService', 'ItemDetailService', function($http,StoreDetailService,PageDataService,ItemDetailService){
 	angular.element('body').css('background', 'url("img/houselistBack.jpg")');
+	angular.element('#divJumbo').addClass('ng-hide');
+	angular.element(document).ready(function(){
+	    $(this).scrollTop(0);
+	});
 	
 	var main = this;
 	main.order = "name";
 	main.searchedText = "";
 	main.dupes = {};
 	main.pageNo = PageDataService.getSelectedHousePgNo();
-	main.items_per_page = 10;
+	main.items_per_page = PageDataService.getSelectedHousePgItems();
 	main.total_count = 444;
 	main.housesDatalist = [];
 	main.regionList = [];
+	main.linkInd = ItemDetailService.returnHouseIndicator();
+
+	if(main.linkInd == "house"){
+		main.btnText = PageDataService.getSelectedHousePgItems();
+	}
+	else{
+		main.btnText = "No Of Records";
+	}
 
 	angular.element('#ddlHousePageList li >a').click(function() {
 		angular.element('#ddlNoOfHousePages').text(angular.element(this).text());
 		if(angular.element(this).text() == "No Of Records"){
-			main.getHousesData(main.pageNo, main.items_per_page);
+			main.getHousesData(main.pageNo, 10);
+			main.btnText = "No Of Records";
+			ItemDetailService.storeHouseIndicator("", "");
 		}
 		else{
 			main.getHousesData(main.pageNo, angular.element(this).text());
+			main.btnText = angular.element(this).text();
 		}
 	});
 
-	this.readyFunction = function(){
-		angular.element(document).ready(function () {
-	        angular.element(".flip").flip({
-	        	trigger: 'hover'
-	    	});
-		});
-	}
-
 	this.textChanged = function(){
 		main.searchedText = angular.element(document.getElementById("txtHouseName")).val();
-		main.readyFunction();
 	}
 
 	this.loadHousesArray = function(){
@@ -50,7 +56,7 @@ myApp.controller('HouseListController',['$http', 'StoreDetailService', 'PageData
 
 		main.searchedText = "";
 		main.regionFilter = "";
-		main.readyFunction();
+		angular.element('#ddlNoOfHousePages').text(main.btnText);
 	}
 	
 	this.loadHousesArray();
@@ -84,17 +90,18 @@ myApp.controller('HouseListController',['$http', 'StoreDetailService', 'PageData
 		{
 			main.regionFilter = "";
 			angular.element('#selectedRegion').html(main.regionList[0]);
-			main.readyFunction();
 		}
 		else
 		{
         	angular.element('#selectedRegion').html(region);
         	main.regionFilter = region;
-        	main.readyFunction();
     	}
 	}
 
 	main.getHouseDetail = function(houseUrl){
     	ItemDetailService.storeHouseUrl(houseUrl);
+    	if(main.btnText != "No Of Records"){	
+    		ItemDetailService.storeHouseIndicator("house");
+    	}
     }
 }])

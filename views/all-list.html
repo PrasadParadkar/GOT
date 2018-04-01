@@ -1,4 +1,104 @@
-<div class="container-fluid">
+<div id="divFilter" class="container-fluid">
+	<br/>
+	<div class="row">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="ddlFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: 1vmax;">
+				  Filter By
+				  <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu center" aria-labelledby="dropdownMenu1">
+					<li><a ng-click="mainCtrl.showAuthor()">Author</a></li>
+					<li><a ng-click="mainCtrl.showPublisher()">Publisher</a></li>
+					<li><a ng-click="mainCtrl.showGender()">Gender</a></li>
+					<li><a ng-click="mainCtrl.showCulture()">Culture</a></li>
+					<li><a ng-click="mainCtrl.showRegion()">Region</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+			<a style="text-decoration: none;cursor: pointer;" data-toggle="tooltip" title="Set Ascending Order"
+			ng-click="mainCtrl.setOrder('asc')">
+				<img class="img-responsive" src="img/asc.png" width="36px" height="36px" style="display: inline;">
+			</a>
+			<a style="text-decoration: none;cursor: pointer;" data-toggle="tooltip" title="Set Descending Order"
+			ng-click="mainCtrl.setOrder('desc')">
+				<img class="img-responsive" src="img/desc.png" width="36px" height="36px" style="display: inline;">
+			</a>
+	    </div>
+	    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<div class="input-field" style="margin-top: 0px;width: 100%;">
+				<input type="text" id="txtSearchBox" class="center form-control" placeholder="Search..." ng-change="mainCtrl.textChanged()" ng-model="search" style="border:1px solid white; border-radius: 5px;height: 36px;">
+			</div>
+		</div>
+	</div>
+	
+  	<div class="row">
+  		<div id="authorList" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+	      <div class="dropdown">
+	        <button class="btn btn-default dropdown-toggle" type="button" id="authorFilter" data-toggle="dropdown">
+	        	<p id="selectedAuthorName"></p>
+	        </button>
+	        <ul id="ddlAuthor" class="dropdown-menu center">
+	          <li ng-repeat="author in mainCtrl.authorList">
+	            <a ng-click="mainCtrl.authorSelected(author)">{{author}}</a>
+	          </li>
+	        </ul>
+	      </div>
+	    </div>
+
+	    <div id="genderList" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+	      <div class="dropdown">
+	        <button class="btn btn-default dropdown-toggle" type="button" id="genderFilter" data-toggle="dropdown" style="font-size: 1vmax;">
+	        </button>
+	        <ul id="ddlGender" class="dropdown-menu center">
+	          <li ng-repeat="gender in mainCtrl.genders">
+	            <a ng-click="mainCtrl.genderSelected(gender)">{{gender}}</a>
+	          </li>
+	        </ul>
+	      </div>
+	    </div>
+    
+	    <div id="cultureList" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+	      <div class="dropdown">
+	        <button class="btn btn-default dropdown-toggle" type="button" id="cultureFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	        	<p id="selectedCultureName"></p>
+	        </button>
+	        <ul id="ddlCulture" class="dropdown-menu center">
+	            <li ng-repeat="culture in mainCtrl.cultureList">
+	              <a ng-click="mainCtrl.cultureSelected(culture)">{{culture}}</a>
+	            </li>
+	        </ul>
+	      </div>
+	    </div>
+
+	    <div id="regionList" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+	    	<div class="dropdown">
+        		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            		<p id="selectedRegionName"></p>
+        		</button>
+        		<ul class="dropdown-menu center">
+                	<li ng-repeat="region in mainCtrl.regionList">
+                  	<a ng-click="mainCtrl.regionSelected(region)">{{region}}</a>
+                	</li>
+        		</ul>
+      		</div>
+	    </div>
+
+	    <div id="publisherList" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+	      <div class="dropdown">
+	        <button class="btn btn-default dropdown-toggle" type="button" id="publisherFilter" data-toggle="dropdown">
+	          <p id="selectedPublisherName"></p>
+	        </button>
+	        <ul id="ddlPublisher" class="dropdown-menu center">
+	          <li ng-repeat="publisher in mainCtrl.publisherList">
+	            <a ng-click="mainCtrl.publisherSelected(publisher)">{{publisher}}</a>
+	          </li>
+	        </ul>
+	      </div>
+	    </div>
+	</div>
+
 	<div ng-repeat="data in mainCtrl.mainData">
 		<div>
 			<book-carousel></book-carousel>
@@ -11,3 +111,15 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.input-field input:focus {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

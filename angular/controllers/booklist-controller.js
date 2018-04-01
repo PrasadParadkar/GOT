@@ -1,5 +1,9 @@
 myApp.controller('BookListController',['$http', 'StoreDetailService', 'PageDataService', 'ItemDetailService', function($http,StoreDetailService,PageDataService,ItemDetailService){
 	angular.element('body').css('background', 'url("img/booklistBack.jpg")');
+	angular.element('#divJumbo').addClass('ng-hide');
+	angular.element(document).ready(function(){
+	    $(this).scrollTop(0);
+	});
 
 	var main = this;
 	main.order = "name";
@@ -9,32 +13,34 @@ myApp.controller('BookListController',['$http', 'StoreDetailService', 'PageDataS
 	main.publisherList = [];
 	main.authorList = [];
 	main.pageNo = PageDataService.getSelectedBookPgNo();
-	main.items_per_page = 10;
+	main.items_per_page = PageDataService.getSelectedBookPgItems();
 	main.total_count = 12;
 	angular.element('#ddlAuthorList').hide();
 	angular.element('#ddlPublisherList').hide();
+	main.linkInd = ItemDetailService.returnBookIndicator();
+
+	if(main.linkInd == "book"){
+		main.btnText = PageDataService.getSelectedBookPgItems();
+	}
+	else{
+		main.btnText = "No Of Records";
+	}
 
 	angular.element('#ddlBookPageList li >a').click(function() {
 		angular.element('#ddlNoOfBookPages').text(angular.element(this).text());
 		if(angular.element(this).text() == "No Of Records"){
-			main.getBooksData(main.pageNo, main.items_per_page);
+			main.getBooksData(main.pageNo, 10);
+			main.btnText = "No Of Records";
+			ItemDetailService.storeBookIndicator("", "");
 		}
 		else{
 			main.getBooksData(main.pageNo, angular.element(this).text());
+			main.btnText = angular.element(this).text();
 		}
 	});
 
-	this.readyFunction = function(){
-		angular.element(document).ready(function () {
-	        angular.element(".flip").flip({
-	        	trigger: 'hover'
-	    	});
-		});
-	}
-
 	this.textChanged = function(){
 		main.searchedText = angular.element(document.getElementById("txtBookName")).val();
-		main.readyFunction();
 	}
 
 	this.loadBooksArray = function(){
@@ -47,7 +53,7 @@ myApp.controller('BookListController',['$http', 'StoreDetailService', 'PageDataS
 		main.authFilter = "";
 		main.publFilter = "";
 		main.searchedText = "";
-		main.readyFunction();
+		angular.element('#ddlNoOfBookPages').text(main.btnText);
 	}
 	
 	this.loadBooksArray();
@@ -107,13 +113,11 @@ myApp.controller('BookListController',['$http', 'StoreDetailService', 'PageDataS
 		{
 			main.authFilter = "";
 			angular.element('#selectedAuthor').html(main.authorList[0]);
-			main.readyFunction();
 		}
 		else
 		{
         	angular.element('#selectedAuthor').html(author);
         	main.authFilter = author;
-        	main.readyFunction();
     	}
     }
 
@@ -122,17 +126,18 @@ myApp.controller('BookListController',['$http', 'StoreDetailService', 'PageDataS
 		{
 			main.publFilter = "";
 			angular.element('#selectedPublisher').html(main.publisherList[0]);
-			main.readyFunction();
 		}
 		else
 		{
         	angular.element('#selectedPublisher').html(publisher);
         	main.publFilter = publisher;
-        	main.readyFunction();
     	}
     }
 
     main.getBookDetail = function(bookUrl){
     	ItemDetailService.storeBookUrl(bookUrl);
+    	if(main.btnText != "No Of Records"){	
+    		ItemDetailService.storeBookIndicator("book");
+    	}
     }
 }])

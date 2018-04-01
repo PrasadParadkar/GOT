@@ -6,7 +6,7 @@
         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="ddlNoOfCharPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              No Of Records
+             
               <span class="caret"></span>
             </button>
             <ul id="ddlCharPageList" class="dropdown-menu center" aria-labelledby="ddlNoOfCharPages">
@@ -62,7 +62,7 @@
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="btnSelectedChar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             </button>
-            <ul class="dropdown-menu" aria-labelledby="ddlCultureList">
+            <ul class="dropdown-menu center" aria-labelledby="ddlCultureList">
                 <li ng-repeat="culture in charListCtrl.cultureList">
                   <a ng-click="charListCtrl.cultureSelected(culture)">{{culture}}</a>
                 </li>
@@ -87,23 +87,13 @@
         <div class="front">
           <div class="card">
             <div class="card-image">
-              <img src="http://cdn.playbuzz.com/cdn/235fb76a-a586-4c1a-8bd6-c0e55859b90a/92ad4231-9e5d-4a2d-91ec-616f898665c7_560_420.jpg" class="img-responsive" style="opacity: 0.7">
-              <span class="card-title" style="color:black;">{{char.name}}</span>
-              <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+              <img src="img/char.jpg" class="img-responsive" style="opacity: 0.7">
+              <span class="card-title" style="color:black;" ng-if="char.name">{{char.name}}</span>
+              <span class="card-title" style="color:black;" ng-if="char.name == ''">Name Unavailable</span>
+              <a class="btn-floating btn-large halfway-fab waves-effect waves-light red" style="pointer-events: none;bottom: -20px;">
                 <i ng-if="char.gender === 'Male'" class="fa fa-mars fa-2x" aria-hidden="true"></i>
                 <i ng-if="char.gender === 'Female'" class="fa fa-venus fa-2x" aria-hidden="true"></i>
               </a>
-            </div>
-            <div class="card-content">
-              <p ng-if="char.aliases.toString()">Aliase - {{char.aliases.toString()}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="back">
-          <div class="card">
-            <div class="card-image">
-              <img src="http://cdn.playbuzz.com/cdn/235fb76a-a586-4c1a-8bd6-c0e55859b90a/92ad4231-9e5d-4a2d-91ec-616f898665c7_560_420.jpg" class="img-responsive" style="opacity: 0.7">
-              <span class="card-title" style="color:black;">{{char.name}}</span>
             </div>
             <div class="card-action center">
               <a href="#/character" ng-click="charListCtrl.getCharDetail(char.url)" class="btn btn-info">Know More</a>
